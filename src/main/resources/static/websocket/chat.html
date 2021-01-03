@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>群聊</title>
+    <script src="./webjars/jquery/jquery.min.js"></script>
+    <script src="./webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="./webjars/stomp-websocket/stomp.min.js"></script>
+</head>
+<body>
+<div>
+    <label for="name">请输入用户名</label>
+    <input id="name" type="text" placeholder="用户名">
+</div>
+<div>
+    <button id="connect" type="button">连接</button>
+    <button id="disconnect" type="button" disabled="disabled">断开连接</button>
+</div>
+<div id="chat" style="display: none"></div>
+<div>
+<label for="content">请输入聊天内容：</label>
+<input type="text" id="content" placeholder="聊天内容">
+</div>
+<button id="send" type="button">发送</button>
+<div id="greetings">
+    <div id="conversation" style="display: none">群聊进行中...</div>
+</div>
+
+<script>
+    var stompClient = null;
+    function setConnected(connected) {
+        $("#connect").prop("disabled",connected);
+        $("#disconnect").prop("disabled",!connected);
+        if(connected){
+            $("#conversation").show();
+            $("#chat").show();
+        }else{
+            $("#conversation").hide();
+            $("#chat").hide();
+        }
+        $("#greetings").html("");
+    }
+    function connect() {
+        if(!$("#name").val()){
+            return;
+        }
+        var socket = new SockJS('/chat'); //使用SockJS建立连接
+        stompClient = Stomp.over(socket); //创建一个STOMP实例
+        stompClient.connect({},function(frame){ //发起连接，并设置回调
+            setConnected(true);
+            stompClient.subscribe("/topic/greetings",function(greeting){ //使用STOMP的subscribe方法订阅服务端发挥的消息
+                showGreeting(JSON.parse(greeting.body)) //设置回调将服务端返回的信息展示出来
+            })
+        })
+    }
+    function disconnect(){
+        if(stompClient != null){
+            stompClient.disconnect(); //使用STOMP实例的disconnect方法断开连接
+        }
+        setConnected(false);
+    }
+    function sendName(){
+        stompClient.send("/app/hello",{},
+            JSON.stringify({'name':$('#name').val(),'content':$('#content').val()})
+        )
+    }
+    function showGreeting(message){
+        $('#greetings').append("<div>"+message.name+":"+message.content+"</div>");
+    }
+    $(function(){
+        $('#connect').click(function(){connect();})
+        $('#disconnect').click(function(){disconnect()});
+        $('#send').click(function(){sendName()});
+    })
+</script>
+
+</body>
+</html>

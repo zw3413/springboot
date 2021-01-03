@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Include the CesiumJS JavaScript and CSS files -->
+    <!-- 引用cesium的js和css，天地图的扩展js -->
+
+    <script src="http://api.tianditu.gov.cn/cdn/plugins/cesium/cesiumTdt.js" ></script>
+    <script src="https://cesiumjs.org/releases/1.76/Build/Cesium/Cesium.js"></script>
+    <link rel="stylesheet" href="https://cesiumjs.org/releases/1.76/Build/Cesium/Widgets/widgets.css"/>
+    <style type="text/css">
+        html, body, #tiandituContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<div id="cesiumContainer">
+</div>
+<script>
+    var cesiumAsset='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwMDhmOGU1Mi1kYTU4LTQ1ZGUtOWQxZS0yMGJiYWMyNjhhOTMiLCJpZCI6MzUyNDUsImlhdCI6MTYwMTU5MTMwMX0.Y0vt0Lnp7En8YK3HqUz8ac-JDnZyAR79qnyh4tKssdE';
+    var tiandituTk='612ae65756225e3affda8a30ac248fb6';
+    // 服务负载子域
+    var subdomains=['0','1','2','3','4','5','6','7'];
+    Cesium.Ion.defaultAccessToken = cesiumAsset;
+
+    var viewer = new Cesium.Viewer('cesiumContainer',{
+        animation:false,       //动画
+        homeButton:true,       //home键
+        geocoder:true,         //地址编码
+        baseLayerPicker:false, //图层选择控件
+        timeline:false,        //时间轴
+        fullscreenButton:true, //全屏显示
+        infoBox:true,         //点击要素之后浮窗
+        sceneModePicker:true,  //投影方式  三维/二维
+        navigationInstructionsInitiallyVisible:false, //导航指令
+        navigationHelpButton:false,     //帮助信息
+        selectionIndicator:false, // 选择
+        imageryProvider: new Cesium.WebMapTileServiceImageryProvider({
+            //影像底图
+            url: "http://t{s}.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk="+tiandituTk,
+            subdomains: subdomains,
+            layer: "tdtImgLayer",
+            style: "default",
+            format: "image/jpeg",
+            tileMatrixSetID: "GoogleMapsCompatible",//使用谷歌的瓦片切片方式
+            show: true
+        }),
+        terrainProvider: Cesium.createWorldTerrain()
+    });
+    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+        url: "http://t0.tianditu.com/cva_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cva&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default.jpg&tk="+tiandituTk,
+        layer: "tdtAnnoLayer",
+        style: "default",
+        format: "image/jpeg",
+        tileMatrixSetID: "GoogleMapsCompatible"
+    }));
+    viewer._cesiumWidget._creditContainer.style.display = "none";  // 隐藏cesium ion
+    var options = {
+        camera : viewer.scene.camera,
+        canvas : viewer.scene.canvas,
+        clampToGround: true //开启贴地
+    };
+
+    viewer.dataSources.add(Cesium.KmlDataSource.load('./data/20201231/48版本1.KMZ', options)).then(function(dataSource){
+        //viewer.clock.shouldAnimate = false;
+
+        var rider = dataSource.entities.getById('tour');
+        viewer.flyTo(rider).then(function(){
+            viewer.trackedEntity = rider;
+            viewer.selectedEntity = viewer.trackedEntity;
+            viewer.clock.multiplier = 30;
+            viewer.clock.shouldAnimate = true;
+        });
+    });
+    viewer.dataSources.add(Cesium.KmlDataSource.load('./data/20201231/中宁宁安3#.kmz', options)).then(function(dataSource){
+        //viewer.clock.shouldAnimate = false;
+
+        var rider = dataSource.entities.getById('tour');
+        viewer.flyTo(rider).then(function(){
+            viewer.trackedEntity = rider;
+            viewer.selectedEntity = viewer.trackedEntity;
+            viewer.clock.multiplier = 30;
+            viewer.clock.shouldAnimate = true;
+        });
+    });
+    viewer.dataSources.add(Cesium.KmlDataSource.load('./data/20201231/卧龙特征.KMZ', options)).then(function(dataSource){
+        //viewer.clock.shouldAnimate = false;
+
+        var rider = dataSource.entities.getById('tour');
+        viewer.flyTo(rider).then(function(){
+            viewer.trackedEntity = rider;
+            viewer.selectedEntity = viewer.trackedEntity;
+            viewer.clock.multiplier = 30;
+            viewer.clock.shouldAnimate = true;
+        });
+    });
+    viewer.dataSources.add(Cesium.KmlDataSource.load('./data/20201231/长山头03#.kmz', options)).then(function(dataSource){
+        //viewer.clock.shouldAnimate = false;
+
+        var rider = dataSource.entities.getById('tour');
+        viewer.flyTo(rider).then(function(){
+            viewer.trackedEntity = rider;
+            viewer.selectedEntity = viewer.trackedEntity;
+            viewer.clock.multiplier = 30;
+            viewer.clock.shouldAnimate = true;
+        });
+    });
+    viewer.dataSources.add(Cesium.KmlDataSource.load('./data/20201231/长山头05#.kmz', options)).then(function(dataSource){
+        //viewer.clock.shouldAnimate = false;
+
+        var rider = dataSource.entities.getById('tour');
+        viewer.flyTo(rider).then(function(){
+            viewer.trackedEntity = rider;
+            viewer.selectedEntity = viewer.trackedEntity;
+            viewer.clock.multiplier = 30;
+            viewer.clock.shouldAnimate = true;
+        });
+    });
+    // 将三维球定位到中国
+    // viewer.camera.flyTo({
+    //     destination: Cesium.Cartesian3.fromDegrees(103.84, 31.15, 17850000),
+    //     orientation: {
+    //         heading :  Cesium.Math.toRadians(348.4202942851978),
+    //         pitch : Cesium.Math.toRadians(-89.74026687972041),
+    //         roll : Cesium.Math.toRadians(0)
+    //     },
+    //     complete:function callback() {
+    //         // 定位完成之后的回调函数
+    //     }
+    // });
+
+</script>
+</div>
+</body>
+</html>

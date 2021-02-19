@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+  <!-- Begin Style Definitions -->
+  <Style id="point1">
+     <!--<IconStyle><Icon>kml_ext_files/kml_symbol_dot_0.png</Icon></IconStyle>-->
+    <IconStyle><Icon><href>http://localhost:8081/d3/img/icon.png</href></Icon></IconStyle>
+  </Style>
+  <Folder>
+    <name>Point Features</name>
+    <description>Point Features</description>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W01</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7794351921,37.3457810942,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W02</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7762995781,37.3448556551,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W03</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7703121586,37.3431468397,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W04</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7870124157,37.3451452718,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W05</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7839660291,37.3430391233,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W06</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7951482878,37.3375674582,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W07</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7900585080,37.3353580486,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W08</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7861066017,37.3340328611,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W09</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8042497100,37.3371004826,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W10</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7990255404,37.3307477373,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W11</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.7973895836,37.3286233845,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W12</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8093566960,37.3356060236,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W13</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8123706778,37.3346663392,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W14</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8124031547,37.3313954607,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W15</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8068729409,37.3259912173,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W16</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8068518541,37.3229639721,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W17</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8240519908,37.3349009037,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W18</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8204023189,37.3261414512,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W19</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8207467969,37.3225440409,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W20</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8282591709,37.3193291543,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W21</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8335587824,37.3190847071,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W22</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8306677206,37.3249615875,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W23</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8305372723,37.3284854402,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W24</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8311948397,37.3328687228,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W25</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8357529291,37.3338457378,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W26</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8396576794,37.3318719177,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W27</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8419706092,37.3359009929,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W28</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8470053201,37.3280443301,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W29</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8525775177,37.3259139751,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W30</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8589549813,37.3212096489,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W31</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8553257388,37.3294801405,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W32</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8604714353,37.3265686230,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W33</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8698926498,37.3246346509,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W34</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8764952291,37.3287305417,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W35</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8701202411,37.3316518000,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W36</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8782125494,37.3347455178,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W37</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8583903984,37.3429820111,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W38</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8533732165,37.3483792761,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W39</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8466122154,37.3412738926,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W40</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8352855597,37.3436069203,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W41</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8313931040,37.3467608247,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W42</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8358872286,37.3490177022,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W43</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8370640705,37.3543793567,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W44</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8133336367,37.3496704763,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W45</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8156489505,37.3539973735,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W46</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8163400233,37.3573623589,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W47</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8218965483,37.3576572503,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <description>Unknown Point Feature</description>
+      <name>W48</name>
+      <styleUrl>#point1</styleUrl>
+      <Point>
+        <coordinates>105.8031857715,37.3537492860,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>

@@ -55,3 +55,6 @@ management: #actualtor配置
     health:
       show-details: when_authorized
       roles: ADMIN
+
+d3:
+  kml_root: /Users/weizhang/d3-kml/

@@ -38,14 +38,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasAnyRole('ADMIN','USER')")
                 .antMatchers("/db/**")
                 .access("hasRole('ADMIN') and hasRole('DBA')")
-                .anyRequest()
-                .authenticated()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/authentication/form")
                 .loginPage("/login.html")
                 .permitAll()
                 .and()
+
                 .csrf()
                 .disable();
     }

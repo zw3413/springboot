@@ -2,6 +2,7 @@ package com.zhangwei.springboot.d3;
 
 import com.at21.common.entity.JsonResult;
 
+import com.at21.common.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -64,10 +65,9 @@ public class D3Controller {
             try {
                 User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
                 username = user.getUsername(); //get logged in username
-            }catch (Exception e){
+            } catch (Exception e) {
                 //e.printStackTrace();
             }
-
             //保存文件信息
             d3Dao.saveKmlFileInfo(id, fileName, fileType, filePath, username);
 
@@ -78,19 +78,27 @@ public class D3Controller {
             String pgUsername = "postgres";
             String pgPassword = "postgres";
             String dbName = "springboot";
-            String cmd = "ogr2ogr -f \"PostgreSQL\" PG:\"host= "+pgHost+" user = "+pgUsername+" dbname= "+dbName+" password ="+pgPassword+" \" "+filePath+"    ";
+            String cmd = "ogr2ogr -f \"PostgreSQL\" PG:\"host=" + pgHost + " user=" + pgUsername + " dbname=" + dbName + " password=" + pgPassword + "\" " + filePath + " ";
+            String tableName = "";
+            if ("KML".equals(fileType)) {
+                tableName = "d3_temp_kml";
+            } else if ("GEOJSON".equals(fileType)) {
+                tableName = "d3_temp_geojson";
+            }else if("SHP".equals(fileType)){
+                tableName="d3_temp_shapefile";
+            }
             try {
+                //cmd += "-nln " + tableName + " -nlt PROMOTE_TO_MULTI -append";//指定导入的表名
+                cmd += "-nln " + tableName ;//指定导入的表名
                 RunCommand runCommand = new RunCommand();
                 runCommand.run(cmd);
-            }catch (Exception e){
+              //  d3Dao.updateGeometryImportFileInfo(tableName, id, username);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
         } catch (Exception e) {
             return new JsonResult(e);
         }
-
-
         return new JsonResult();
     }
 
@@ -124,7 +132,8 @@ public class D3Controller {
     public JsonResult del(@RequestBody List<String> ids) {
 
         for (String id : ids) {
-            d3Dao.del(id);
+            d3Service.deleteFile(id);
+
         }
         return new JsonResult();
     }

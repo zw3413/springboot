@@ -18,6 +18,10 @@ info:
       name: zhangwei
       email: zhangweicalm@gmail.com
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:postgresql://localhost:5432/springboot
@@ -37,12 +41,12 @@ spring:
     view:
       prefix: /
       suffix: .html
-  activemq:
-    broker-url: tcp://localhost:61616 #activeMq
-    packages:
-      trust-all: true #信任所有的包
-    user: admin
-    password: admin
+#  activemq:
+#    broker-url: tcp://localhost:61616 #activeMq
+#    packages:
+#      trust-all: true #信任所有的包
+#    user: admin
+#    password: admin
 management: #actualtor配置
   endpoints:
     web:

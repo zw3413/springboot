@@ -64,7 +64,17 @@ public class D3Dao {
     }
 
     public Map<String, Object> getFileInfo(String id) {
-        String sql ="select * from d3_kml_file where id = ?";
-        return jdbcTemplate.queryForMap(sql, new Object[]{id});
+        try {
+            String sql = "select * from d3_kml_file where id = ?";
+            return jdbcTemplate.queryForMap(sql, new Object[]{id});
+        }catch (Exception e){
+
+        }
+        return null;
+    }
+
+    public void updateGeometryImportFileInfo(String tableName,String id, String username) {
+        String sql = "update "+tableName+" set fileid = ? , createuser = ?, createtime = now()";
+        jdbcTemplate.update(sql,new Object[]{id,username});
     }
 }

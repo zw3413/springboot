@@ -1,5 +1,7 @@
 package com.zhangwei.springboot.d3;
 
+import com.at21.common.exception.ServiceException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,39 +12,32 @@ public class RunCommand {
         RunCommand s = new RunCommand();
         s.run("ping 127.0.0.1");
     }
-    public void run(String cmd){
+    public void run(String cmd) throws ServiceException{
         Runtime run =Runtime.getRuntime();
+        String line = "";
         try {
-            Process p = run.exec(cmd);
-            InputStream ins= p.getInputStream();
+            System.out.println("执行命令："+cmd);
+            String[] command = {"/bin/sh", "-c", cmd};
+            Process p = run.exec(command);
+//            InputStream ins= p.getInputStream();
             InputStream ers= p.getErrorStream();
-            new Thread(new inputStreamThread(ins)).start();
-            p.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    class inputStreamThread implements Runnable{
-        private InputStream ins = null;
-        private BufferedReader bfr = null;
-        public inputStreamThread(InputStream ins){
-            this.ins = ins;
-            this.bfr = new BufferedReader(new InputStreamReader(ins));
-        }
-        @Override
-        public void run() {
-            String line = null;
+
             byte[] b = new byte[100];
             int num = 0;
             try {
-                while((num=ins.read(b))!=-1){
-                    System.out.println(new String(b,"gb2312"));
+                while((num=ers.read(b))!=-1){
+                    line+=new String(b , "gb2312")+"\\\n";
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+        } catch (IOException e) {
+            throw new ServiceException("导入命令执行异常。",e);
+        }
+        if(line.length()>0){
+            throw new ServiceException(line);
         }
     }
+
 }

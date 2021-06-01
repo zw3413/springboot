@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+
+    <link rel="stylesheet" href="/resource/element/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <script src="/resource/vue/vue.js"></script>
+    <script src="/resource/axios/axios.min.js"></script>
+    <script src="/resource/qrcode/qrcode.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!--<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">-->
+    <!--<link th:href="@{/resource/vuetify/font/fonts_googleapis.com.css}" rel="stylesheet">-->
+    <link href="/resource/font-5.8.55/css/materialdesignicons.css" rel="stylesheet">
+    <link href="/resource/vuetify/vuetify.min.css" rel="stylesheet">
+    <script src="/resource/vuetify/vuetify.js"></script>
+    <style>
+
+        [v-cloak] {
+            display: none;
+        }
+
+        .details > .row {
+            border-bottom: 1px dashed lightgrey;
+        }
+
+        .v-form div{
+            margin:0;
+            padding:0;
+        }
+        .v-form .col-md-3.col-12{
+            padding:0 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+Hello world!
+from static
+<div id="app">
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+        data: function () {
+            return {
+                startTimeMenu:false,
+                endTimeMenu:false,
+                expanded: [],
+                options: {},
+                singleExpand: false,
+                tableHeaders: [
+                    {text: 'RECID', value: 'RECID', sortable: false},
+                    {text: 'SFWS', value: 'SFWS', sortable: false},
+                    {text: 'SQZT', value: 'SQZT', sortable: false},
+                    {text: '不动产权证号', value: 'YBDCQZSH', sortable: false},
+                    {text: '申请时间', value: 'SQSJ', sortable: false},
+                    {text: 'fwuuid', value: 'FWUUID', sortable: false},
+                    {text: '交易状态', value: 'DEALSTATUSCODE', sortable: false}
+                ],
+                win_height: window.innerHeight,
+                tableData: [],
+                dialog:false,
+                html:'',
+                total: 0,
+                currentPage: 1,
+                pageSize: 10,
+                hint1: '',
+                hint2: '',
+                hint3: '',
+                hint4: '',
+                hint5: '',
+                hint6: '',
+                loading: true,
+                sfws: '',
+                sqzt: '',
+                fwuuid: '',
+                startTime: '',
+                endTime: ''
+            }
+        },
+        methods: {
+            loadData() {
+                this.loading = true;
+                var that = this;
+                axios.post('./queryList?page=' + this.currentPage +
+                    '&pageSize=' + this.pageSize +
+                    '&bdcqzh=' + this.hint1 +
+                    '&recid=' + this.hint2 +
+                    '&uploadstatus=' + this.hint3 +
+                    '&imguploadstatus=' + this.hint4 +
+                    '&declarestatuscode=' + this.hint5 +
+                    '&dealstatuscode=' + this.hint6 +
+                    '&sqzt=' + this.sqzt +
+                    '&sfws=' + this.sfws +
+                    '&fwuuid=' + this.fwuuid +
+                    '&startTime=' + this.startTime +
+                    '&endTime=' + this.endTime
+                )
+                    .then((resp) => {
+                    that.loading = false
+                if (resp.data.code == 200) {
+                    that.tableData = resp.data.data.data;
+                    that.total = resp.data.data.count
+                }
+            })
+            },
+            handleCurrentChange() {
+                this.loadData()
+            },
+            getUploadParam(recid) {
+                var that = this;
+                axios.post('./getUploadParamByRecid?recid=' + recid)
+                    .then((resp) => {
+                    if (resp.data.code == 200) {
+                    if(resp.data.data) {
+                        this.html = '<div style="overflow-y: scroll; width:500px; height:90%">' + resp.data.data + '</div>';
+                    }else{
+                        this.html = "无信息"
+                    }
+                }
+            })
+            },
+            resetUploadStatus(recid) {
+                var that = this;
+                axios.post('./resetUploadStatus?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            resetImgUploadStatus(recid) {
+                var that = this;
+                axios.post('./resetImgUploadStatus?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            cancel(recid) {
+                var that = this;
+                axios.post('./cancel?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            getUnionPay(fwuuid) {
+                var that = this;
+                axios.post('./getUnionPay?fwuuid=' + fwuuid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            applyPay(recid) {
+                var that = this;
+                axios.post('./applyPay?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            onSubmit() {
+                this.currentPage = 1
+                this.loadData()
+            },
+            payView(recid) {
+                var that = this;
+                window.open('./pay?recid=' + recid)
+                // axios.get('./pay?recid=' + recid)
+                //     .then((resp) => {
+                //         debugger
+                //         this.$message(resp.data.message);
+                //     })
+            },
+            applyCheck(recid) {
+                var that = this;
+                axios.post('./applyCheck?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            applySubmit(recid) {
+                var that = this;
+                axios.post('./applySubmit?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            applyRefund(recid) {
+                var that = this;
+                axios.post('./applyRefund?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message);
+            })
+            },
+            restPayStatus(recid) {
+                var that = this;
+                axios.post('./resetPayStatus?recid=' + recid)
+                    .then((resp) => {
+                    alert(resp.data.message)
+            })
+            }
+        },
+        watch: {
+            options: {
+                handler () {
+                    this.currentPage=this.currentPage+1
+                    this.loadData();
+                },
+                deep: true,
+            },
+        },
+        mounted: function () {
+            this.loadData();
+            //挂载浏览器高度获取方法
+            const that = this;
+            window.onresize = () => {
+                return (() => {
+                    that.winHeight = window.innerHeight;
+            })();
+            };
+        }
+    })
+</script>
+</body>
+</html>
